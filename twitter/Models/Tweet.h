@@ -24,5 +24,6 @@
 @property (strong, nonatomic) NSString *retweetedByUser;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
++ (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;
 
 @end
