@@ -10,11 +10,12 @@
 #import "APIManager.h"
 #import "Tweet.h"
 #import "TweetCell.h"
+#import "ComposeViewController.h"
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property NSArray *tweetArray;
+@property NSMutableArray *tweetArray;
 @property UIRefreshControl *refreshControl;
 
 @end
@@ -65,7 +66,7 @@
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            self.tweetArray = tweets;
+            self.tweetArray = [NSMutableArray arrayWithArray:tweets];
             [self.tableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
@@ -76,18 +77,31 @@
     
 }
 
-
-
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController *)navigationController.topViewController;
+    composeController.delegate = self;
+
 }
-*/
+
+- (void)didTweet:(Tweet *)tweet {
+    
+    [self.tweetArray insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+
+}
+
+- (IBAction)logoutButtonTapped:(id)sender {
+}
+
+
+
 
 
 @end

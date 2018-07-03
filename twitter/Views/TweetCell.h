@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "APIManager.h"
 
 @interface TweetCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
 @property (weak, nonatomic) IBOutlet UILabel *author;
+@property (weak, nonatomic) IBOutlet UILabel *retweetCount;
+@property (weak, nonatomic) IBOutlet UILabel *favoriteCount;
 @property (weak, nonatomic) Tweet *tweet;
 
 @end
