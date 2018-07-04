@@ -8,6 +8,7 @@
 
 #import "TweetCell.h"
 #import "TweetCell.m"
+#import "UIImageView+AFNetworking.h"
 
 @implementation TweetCell
 
@@ -31,6 +32,11 @@
     self.tweetText.text = self.tweet.text;
     self.retweetCount.text = [[NSNumber numberWithInt:self.tweet.retweetCount] stringValue];
     self.favoriteCount.text = [[NSNumber numberWithInt:self.tweet.favoriteCount] stringValue];
+    
+    self.profilePic.image = nil;
+    if (self.tweet.user.profilePicLink != nil) {
+        [self.profilePic setImageWithURL:self.tweet.user.profilePicLink];
+    }
 }
 
 - (IBAction)retweetButtonTapped:(id)sender {
@@ -126,12 +132,7 @@
                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
             }
         }];
-        
-        
     }
-    
-    
-    
 }
 
 - (void)refreshData {
@@ -139,6 +140,7 @@
     self.retweetCount.text = [[NSNumber numberWithInt:self.tweet.retweetCount] stringValue];
     self.favoriteCount.text = [[NSNumber numberWithInt:self.tweet.favoriteCount] stringValue];
 }
+
 
 
 

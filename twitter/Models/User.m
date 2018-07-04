@@ -17,7 +17,11 @@
         
         self.name = dictionary[@"name"];
         self.screenName = dictionary[@"screen_name"];
-    }
+        
+        NSString *picUrlString = dictionary[@"profile_image_url_https"];
+        NSURL *picUrl = [[NSURL alloc] initWithString:picUrlString];
+        
+        self.profilePicLink = picUrl;    }
     
     return self;
 }

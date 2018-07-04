@@ -20,6 +20,7 @@
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 - (void)unretweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 - (void)unfavorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
+- (void)getProfileImage:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 
 
 @end

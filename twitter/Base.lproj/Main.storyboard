@@ -76,11 +76,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDa-dd-5fd">
-                                                    <rect key="frame" x="16" y="11" width="48" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNH-Am-OCm">
                                                     <rect key="frame" x="72" y="11" width="287" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -127,13 +122,17 @@
                                                         <action selector="favoriteButtonTapped:" destination="1oC-c0-Y5K" eventType="touchUpInside" id="g9t-eU-gFm"/>
                                                     </connections>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhd-iu-Oo4">
+                                                    <rect key="frame" x="7" y="6" width="57" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="author" destination="eNH-Am-OCm" id="eef-I2-CaP"/>
                                             <outlet property="favoriteButton" destination="OdZ-Am-TcH" id="cSz-oD-RTm"/>
                                             <outlet property="favoriteCount" destination="Yoz-gg-TT2" id="G2A-fc-Qsm"/>
-                                            <outlet property="profilePic" destination="HDa-dd-5fd" id="oGl-m2-dIh"/>
+                                            <outlet property="profilePic" destination="Nhd-iu-Oo4" id="21b-5Q-fzb"/>
                                             <outlet property="retweetButton" destination="Hkk-np-Mox" id="GzG-GG-aLR"/>
                                             <outlet property="retweetCount" destination="2dX-89-dCp" id="HbD-dw-Hjh"/>
                                             <outlet property="tweetText" destination="gl9-hp-KPE" id="IxD-l4-gU1"/>
