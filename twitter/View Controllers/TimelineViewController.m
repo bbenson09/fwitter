@@ -16,7 +16,7 @@
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property NSMutableArray *tweetArray;
 @property UIRefreshControl *refreshControl;
 
@@ -27,8 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.mainTableView.dataSource = self;
+    self.mainTableView.delegate = self;
     
     // Initializes refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -38,7 +38,7 @@
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTimeline) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    [self.mainTableView insertSubview:self.refreshControl atIndex:0];
     
 }
 
@@ -69,7 +69,7 @@
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             self.tweetArray = [NSMutableArray arrayWithArray:tweets];
-            [self.tableView reloadData];
+            [self.mainTableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -95,7 +95,7 @@
 - (void)didTweet:(Tweet *)tweet {
     
     [self.tweetArray insertObject:tweet atIndex:0];
-    [self.tableView reloadData];
+    [self.mainTableView reloadData];
 
 }
 
@@ -111,6 +111,7 @@
     
     [[APIManager shared] logout];
 }
+
 
 
 

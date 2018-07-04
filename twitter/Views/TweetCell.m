@@ -42,7 +42,7 @@
         
         self.retweetCount.textColor = [UIColor greenColor];
         
-        [self refreshData];
+        [self.retweetButton setSelected:YES];
         
         [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
@@ -62,6 +62,8 @@
         
         self.retweetCount.textColor = [UIColor blackColor];
         
+        [self.retweetButton setSelected:NO];
+        
         [self refreshData];
         
         [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
@@ -72,16 +74,10 @@
                 NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
             }
         }];
-        
-        
-        
-        
-        
     }
-    
-    
-   
 }
+
+
 
 - (IBAction)favoriteButtonTapped:(id)sender {
     
@@ -92,6 +88,8 @@
         self.tweet.favoriteCount += 1;
         
         self.favoriteCount.textColor = [UIColor greenColor];
+        
+        [self.favoriteButton setSelected:YES];
         
         // Update cell UI
         [self refreshData];
@@ -114,6 +112,8 @@
         self.tweet.favoriteCount -= 1;
         
         self.favoriteCount.textColor = [UIColor blackColor];
+        
+        [self.favoriteButton setSelected:NO];
         
         // Update cell UI
         [self refreshData];
