@@ -93,7 +93,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hkk-np-Mox">
                                                     <rect key="frame" x="72" y="132" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" backgroundImage="retweet-icon"/>
+                                                    <state key="normal" image="retweet-icon"/>
                                                     <state key="selected" title="selectedImage" image="retweet-icon-green"/>
                                                     <connections>
                                                         <action selector="retweetButtonTapped:" destination="1oC-c0-Y5K" eventType="touchUpInside" id="oQ1-1k-Tbf"/>

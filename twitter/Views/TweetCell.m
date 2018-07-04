@@ -33,6 +33,13 @@
     self.retweetCount.text = [[NSNumber numberWithInt:self.tweet.retweetCount] stringValue];
     self.favoriteCount.text = [[NSNumber numberWithInt:self.tweet.favoriteCount] stringValue];
     
+    if (self.tweet.retweeted)
+        [self.retweetButton setSelected:YES];
+    
+    if (self.tweet.favorited)
+        [self.favoriteButton setSelected:YES];
+        
+    
     self.profilePic.image = nil;
     if (self.tweet.user.profilePicLink != nil) {
         [self.profilePic setImageWithURL:self.tweet.user.profilePicLink];
@@ -49,6 +56,8 @@
         self.retweetCount.textColor = [UIColor greenColor];
         
         [self.retweetButton setSelected:YES];
+        
+        [self refreshData];
         
         [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
@@ -93,7 +102,7 @@
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
         
-        self.favoriteCount.textColor = [UIColor greenColor];
+        self.favoriteCount.textColor = [UIColor redColor];
         
         [self.favoriteButton setSelected:YES];
         
@@ -126,10 +135,10 @@
         
         [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
-                NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+                NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
             }
             else{
-                NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+                NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
             }
         }];
     }
