@@ -30,15 +30,30 @@
     
     self.author.text = self.tweet.user.name;
     self.tweetText.text = self.tweet.text;
+    self.username.text = self.tweet.user.screenName;
+    self.date.text = self.tweet.createdAtString;
     self.retweetCount.text = [[NSNumber numberWithInt:self.tweet.retweetCount] stringValue];
     self.favoriteCount.text = [[NSNumber numberWithInt:self.tweet.favoriteCount] stringValue];
     
-    if (self.tweet.retweeted)
+    if (self.tweet.retweeted) {
         [self.retweetButton setSelected:YES];
-    
-    if (self.tweet.favorited)
-        [self.favoriteButton setSelected:YES];
+        self.retweetCount.textColor = [UIColor greenColor];
+    }
+    else {
         
+        [self.retweetButton setSelected:NO];
+        self.retweetCount.textColor = [UIColor blackColor];
+    }
+    
+    if (self.tweet.favorited) {
+        [self.favoriteButton setSelected:YES];
+        self.favoriteCount.textColor = [UIColor redColor];
+    }
+    else {
+        [self.favoriteButton setSelected:NO];
+        self.favoriteCount.textColor = [UIColor blackColor];
+        
+    }
     
     self.profilePic.image = nil;
     if (self.tweet.user.profilePicLink != nil) {
