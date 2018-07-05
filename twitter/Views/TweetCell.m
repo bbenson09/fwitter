@@ -31,7 +31,7 @@
     self.author.text = self.tweet.user.name;
     self.tweetText.text = self.tweet.text;
     self.username.text = self.tweet.user.screenName;
-    self.date.text = self.tweet.createdAtString;
+    self.date.text = self.tweet.timeAgo;
     self.retweetCount.text = [[NSNumber numberWithInt:self.tweet.retweetCount] stringValue];
     self.favoriteCount.text = [[NSNumber numberWithInt:self.tweet.favoriteCount] stringValue];
     
