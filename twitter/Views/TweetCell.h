@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *favoriteCount;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UILabel *replyCount;
 
 @property (weak, nonatomic) Tweet *tweet;
 

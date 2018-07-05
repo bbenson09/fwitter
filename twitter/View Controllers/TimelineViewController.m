@@ -13,6 +13,7 @@
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "ReplyViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -81,16 +82,7 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController *)navigationController.topViewController;
-    composeController.delegate = self;
 
-}
 
 - (void)didTweet:(Tweet *)tweet {
     
@@ -111,6 +103,33 @@
     
     [[APIManager shared] logout];
 }
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"showComposeStoryboard"]) {
+        
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController *)navigationController.topViewController;
+        composeController.delegate = self;
+    
+    }
+    else if ([[segue identifier] isEqualToString:@"showReplyStoryboard"]) {
+        
+        NSIndexPath *indexPath = [self.mainTableView indexPathForSelectedRow];
+        UINavigationController *destViewController = [segue destinationViewController];
+        // Tweet *thisTweet = self.tweetArray[indexPath.row];
+        ReplyViewController *replyController = (ReplyViewController *)destViewController.topViewController;
+        replyController.tweet = self.tweetArray[indexPath.row];
+        
+    }
+    
+    
+}
+
+
 
 
 

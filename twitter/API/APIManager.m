@@ -138,7 +138,18 @@ static NSString * const consumerSecret = @"JxIewp8h1Qs8WqbkXGqvhHTGNKhEwH7QvmI1G
        }];
 }
 
-
-
+- (void)postReplyWithText:(NSString *)text :(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion {
+    
+    NSString *urlString = @"1.1/statuses/update.json";
+    NSString *status = [NSString stringWithFormat:@"@%@ %@", tweet.user.screenName, text];
+    NSDictionary *parameters = @{@"status": status, @"in_reply_to_status_id": tweet.idStr};
+    
+    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+        Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
+        completion(tweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
 
 @end
