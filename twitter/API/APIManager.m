@@ -64,6 +64,28 @@ static NSString * const consumerSecret = @"JxIewp8h1Qs8WqbkXGqvhHTGNKhEwH7QvmI1G
        completion(nil, error);
    }];
 }
+
+- (void)loadMoreDataWithCompletion:(Tweet *)tweet completion:(void(^)(NSArray *tweets, NSError *error))completion {
+
+    NSString *maxId = tweet.idStr;
+    NSDictionary *parameters = @{@"max_id": maxId};
+    
+    [self GET:@"1.1/statuses/home_timeline.json"
+   parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+       
+       // Manually cache the tweets. If the request fails, restore from cache if possible.
+       NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tweetDictionaries];
+       [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"hometimeline_tweets"];
+       
+       NSMutableArray *tweets = [Tweet tweetsWithArray:tweetDictionaries];
+       completion(tweets, nil);
+       
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       
+       completion(nil, error);
+   }];
+
+}
 - (void)postStatusWithText:(NSString *)text completion:(void(^)(Tweet *, NSError *))completion {
     
     NSString *urlString = @"1.1/statuses/update.json";

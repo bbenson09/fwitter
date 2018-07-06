@@ -15,11 +15,12 @@
 #import "LoginViewController.h"
 #import "ReplyViewController.h"
 
-@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property NSMutableArray *tweetArray;
 @property UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
@@ -127,6 +128,37 @@
     }
     
     
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (!self.isMoreDataLoading) {
+        
+        int scrollViewContentHeight = self.mainTableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.mainTableView.bounds.size.height;
+        
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.mainTableView.isDragging) {
+            
+            self.isMoreDataLoading = true;
+            
+            
+            Tweet *lastTweet = self.tweetArray.lastObject;
+            [[APIManager shared] loadMoreDataWithCompletion:lastTweet completion:^(NSArray *tweets, NSError *error) {
+                
+                if(tweets){
+                    NSLog(@"Successfully loaded more data");
+                    [self.tweetArray addObjectsFromArray:tweets];
+                    [self.mainTableView reloadData];
+                    
+                }
+                else{
+                    
+                    NSLog(@"Error loading more data: %@", error.localizedDescription);
+                    
+                }
+            }];
+        }
+    }
 }
 
 

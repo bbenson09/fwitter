@@ -141,27 +141,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPN-v4-zAG">
-                                                    <rect key="frame" x="102" y="75" width="32" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="reply-icon"/>
-                                                    <connections>
-                                                        <segue destination="rPo-7D-379" kind="presentation" identifier="showReplyStoryboard" id="ZUT-r6-Ww7"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dX-89-dCp">
                                                     <rect key="frame" x="226" y="78.5" width="42.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He0-Ro-sPS">
-                                                    <rect key="frame" x="138" y="78" width="43" height="21"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPN-v4-zAG">
+                                                    <rect key="frame" x="126" y="74" width="32" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <state key="normal" title="Button" image="reply-icon"/>
+                                                    <connections>
+                                                        <segue destination="rPo-7D-379" kind="presentation" identifier="showReplyStoryboard" id="ZUT-r6-Ww7"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Hkk-np-Mox" firstAttribute="top" secondItem="gl9-hp-KPE" secondAttribute="bottom" constant="18" id="1e0-ho-70H"/>
@@ -195,7 +188,6 @@
                                             <outlet property="favoriteCount" destination="Yoz-gg-TT2" id="G2A-fc-Qsm"/>
                                             <outlet property="profilePic" destination="Nhd-iu-Oo4" id="21b-5Q-fzb"/>
                                             <outlet property="replyButton" destination="VPN-v4-zAG" id="daA-E6-fiX"/>
-                                            <outlet property="replyCount" destination="He0-Ro-sPS" id="WH9-x5-Cfy"/>
                                             <outlet property="retweetButton" destination="Hkk-np-Mox" id="GzG-GG-aLR"/>
                                             <outlet property="retweetCount" destination="2dX-89-dCp" id="HbD-dw-Hjh"/>
                                             <outlet property="tweetText" destination="gl9-hp-KPE" id="IxD-l4-gU1"/>
