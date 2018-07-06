@@ -21,7 +21,13 @@
         NSString *picUrlString = dictionary[@"profile_image_url_https"];
         NSURL *picUrl = [[NSURL alloc] initWithString:picUrlString];
         
-        self.profilePicLink = picUrl;    }
+        self.profilePicLink = picUrl;
+        self.userDescription = dictionary[@"description"];
+        self.numberTweets = [NSString stringWithFormat:@"%@", dictionary[@"statuses_count"]];
+        self.numberFollowers = [NSString stringWithFormat:@"%@", dictionary[@"followers_count"]];
+        self.numberFollowing = [NSString stringWithFormat:@"%@", dictionary[@"friends_count"]];
+        
+    }
     
     return self;
 }

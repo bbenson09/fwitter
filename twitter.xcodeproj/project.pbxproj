@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0130164320F016CF0010FD04 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130164220F016CF0010FD04 /* ProfileViewController.m */; };
 		015F092120EAC47F00CF19E7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 015F092020EAC47F00CF19E7 /* User.m */; };
 		015F092420EAC48E00CF19E7 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 015F092320EAC48E00CF19E7 /* Tweet.m */; };
 		015F092A20EAD3DD00CF19E7 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015F092920EAD3DD00CF19E7 /* TweetCell.m */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0130164120F016CF0010FD04 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		0130164220F016CF0010FD04 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		015F091F20EAC47F00CF19E7 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		015F092020EAC47F00CF19E7 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		015F092220EAC48E00CF19E7 /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
 				01D7405B20EEC63500645C41 /* ReplyViewController.h */,
 				01D7405C20EEC63500645C41 /* ReplyViewController.m */,
+				0130164120F016CF0010FD04 /* ProfileViewController.h */,
+				0130164220F016CF0010FD04 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
+				0130164320F016CF0010FD04 /* ProfileViewController.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +442,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.twitter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bevinbenson.twitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -454,7 +460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.twitter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bevinbenson.twitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

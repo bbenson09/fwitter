@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "ReplyViewController.h"
+#import "ProfileViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
@@ -126,6 +127,16 @@
         replyController.tweet = self.tweetArray[indexPath.row];
         
     }
+
+    else if ([[segue identifier] isEqualToString:@"showProfileStoryboard"]) {
+        
+        NSIndexPath *indexPath = [self.mainTableView indexPathForSelectedRow];
+        UINavigationController *destViewController = [segue destinationViewController];
+        // Tweet *thisTweet = self.tweetArray[indexPath.row];
+        ProfileViewController *profileController = (ProfileViewController *)destViewController.topViewController;
+        profileController.tweet = self.tweetArray[indexPath.row];
+    }
+
     
     
 }
