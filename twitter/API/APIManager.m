@@ -32,7 +32,7 @@ static NSString * const consumerSecret = @"JxIewp8h1Qs8WqbkXGqvhHTGNKhEwH7QvmI1G
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
     NSString *key = consumerKey;
     NSString *secret = consumerSecret;
-    // Check for launch arguments override
+
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-key"]) {
         key = [[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-key"];
     }
@@ -52,7 +52,6 @@ static NSString * const consumerSecret = @"JxIewp8h1Qs8WqbkXGqvhHTGNKhEwH7QvmI1G
     [self GET:@"1.1/statuses/home_timeline.json"
    parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
        
-       // Manually cache the tweets. If the request fails, restore from cache if possible.
        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tweetDictionaries];
        [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"hometimeline_tweets"];
        
@@ -73,7 +72,6 @@ static NSString * const consumerSecret = @"JxIewp8h1Qs8WqbkXGqvhHTGNKhEwH7QvmI1G
     [self GET:@"1.1/statuses/home_timeline.json"
    parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
        
-       // Manually cache the tweets. If the request fails, restore from cache if possible.
        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tweetDictionaries];
        [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"hometimeline_tweets"];
        

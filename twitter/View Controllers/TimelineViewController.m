@@ -33,10 +33,8 @@
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
     
-    // Initializes refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
 
-    // Get timeline
     [self fetchTimeline];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -47,7 +45,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -67,7 +64,6 @@
 
 - (void)fetchTimeline {
     
-    // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
@@ -81,10 +77,6 @@
     [self.refreshControl endRefreshing];
     
 }
-
-#pragma mark - Navigation
-
-
 
 - (void)didTweet:(Tweet *)tweet {
     
@@ -106,10 +98,7 @@
     [[APIManager shared] logout];
 }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     
     if ([[segue identifier] isEqualToString:@"showComposeStoryboard"]) {
         
@@ -122,7 +111,6 @@
         
         NSIndexPath *indexPath = [self.mainTableView indexPathForSelectedRow];
         UINavigationController *destViewController = [segue destinationViewController];
-        // Tweet *thisTweet = self.tweetArray[indexPath.row];
         ReplyViewController *replyController = (ReplyViewController *)destViewController.topViewController;
         replyController.tweet = self.tweetArray[indexPath.row];
         
@@ -132,7 +120,6 @@
         
         NSIndexPath *indexPath = [self.mainTableView indexPathForSelectedRow];
         UINavigationController *destViewController = [segue destinationViewController];
-        // Tweet *thisTweet = self.tweetArray[indexPath.row];
         ProfileViewController *profileController = (ProfileViewController *)destViewController.topViewController;
         profileController.tweet = self.tweetArray[indexPath.row];
     }
@@ -160,23 +147,13 @@
                     NSLog(@"Successfully loaded more data");
                     [self.tweetArray addObjectsFromArray:tweets];
                     [self.mainTableView reloadData];
-                    
                 }
                 else{
                     
                     NSLog(@"Error loading more data: %@", error.localizedDescription);
-                    
                 }
             }];
         }
     }
 }
-
-
-
-
-
-
-
-
 @end

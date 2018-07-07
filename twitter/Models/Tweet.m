@@ -16,7 +16,6 @@
     
     if (self) {
         
-        // Is this a re-tweet?
         NSDictionary *originalTweet = dictionary[@"retweeted_status"];
         if (originalTweet != nil) {
             NSDictionary *userDictionary = dictionary[@"user"];
@@ -38,9 +37,9 @@
         
         NSString *createdAtOriginalString = dictionary[@"created_at"];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        // Configure the input format to parse the date string
+
         formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-        // Convert String to Date
+
         NSDate *date = [formatter dateFromString:createdAtOriginalString];
         self.timeAgo = [date shortTimeAgoSinceNow];
 
