@@ -30,7 +30,7 @@
     
     self.author.text = self.tweet.user.name;
     self.tweetText.text = self.tweet.text;
-    self.username.text = self.tweet.user.screenName;
+    self.username.text = [NSString stringWithFormat: @"@%@", self.tweet.user.screenName];
     self.date.text = self.tweet.timeAgo;
     self.retweetCount.text = [[NSNumber numberWithInt:self.tweet.retweetCount] stringValue];
     self.favoriteCount.text = [[NSNumber numberWithInt:self.tweet.favoriteCount] stringValue];
@@ -56,8 +56,11 @@
     }
     
     self.profilePic.image = nil;
-    if (self.tweet.user.profilePicLink != nil) {
-        [self.profilePic setImageWithURL:self.tweet.user.profilePicLink];
+    NSString *profilePicLinkString = self.tweet.user.profilePicLink.absoluteString;
+    profilePicLinkString = [profilePicLinkString stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+    NSURL *profilePicURL = [NSURL URLWithString:profilePicLinkString];
+    if (profilePicURL != nil) {
+        [self.profilePic setImageWithURL:profilePicURL];
     }
 }
 

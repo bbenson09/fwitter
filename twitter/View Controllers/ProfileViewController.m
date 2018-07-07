@@ -28,11 +28,15 @@
     // Do any additional setup after loading the view.
     
     self.profilePic.image = nil;
-    if (self.tweet.user.profilePicLink != nil) {
-        [self.profilePic setImageWithURL:self.tweet.user.profilePicLink];
+    NSString *profilePicLinkString = self.tweet.user.profilePicLink.absoluteString;
+    profilePicLinkString = [profilePicLinkString stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
+    NSURL *profilePicURL = [NSURL URLWithString:profilePicLinkString];
+    if (profilePicURL != nil) {
+        [self.profilePic setImageWithURL:profilePicURL];
     }
+    
     self.author.text = self.tweet.user.name;
-    self.username.text = self.tweet.user.screenName;
+    self.username.text = [NSString stringWithFormat: @"@%@", self.tweet.user.screenName];
     self.descriptionText.text = self.tweet.user.userDescription;
     self.numTweets.text = self.tweet.user.numberTweets;
     self.numFollowers.text = self.tweet.user.numberFollowers;
